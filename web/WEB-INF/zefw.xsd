@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.mvpanchal.org/zefw/config"
+            elementFormDefault="qualified" xmlns:tns="http://www.mvpanchal.org/zefw/config">
+
+    <xsd:complexType name="LifeCycleHandlerType">
+        <xsd:annotation>
+            <xsd:documentation>
+            	This represents life cycle handler. The handler is used in various lifecycle phase.
+                Like, on application initialization, on application destroy and in every time when request event occurs.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="type" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                	Fully qualified class name of the life cycle handler.
+            	</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ApplicationLifeCycleType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This represetns application life cycle handler.
+                Initializer: called when application initialized.
+                This class implements org.frozenarc.zeframework.lifecycle.ApplicationInitializer interface
+                ProcessingTube: Each request goes through the tube.
+                This class extends org.frozenarc.zeframework.processingtube.AbstractProcessingTube class
+                Destroyer: called when application destroyed.
+                This class implements org.frozenarc.zeframework.lifecycle.ApplicationDestroyer interface.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="Initializer" type="tns:LifeCycleHandlerType" minOccurs="0" />
+            <xsd:element name="ProcessingTube" type="tns:LifeCycleHandlerType" minOccurs="0"/>
+            <xsd:element name="Destroyer" type="tns:LifeCycleHandlerType" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ExceptionType">
+        <xsd:annotation>
+            <xsd:documentation>
+            	This represents configuration of a exception which is to be handled 
+            	when it is thrown during action handling or data loading task.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="type" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                	Fully qualified class name of the exception which is to be configured.
+            	</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="handler" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation>
+                    Fully qualified class name of the exception handler.
+                    This class implements org.frozenarc.zeframework.exceptionhandler.ExceptionHandler interface.
+                    The class has some work to do when the exception is thrown.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="page" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                	Path of a web page from context root which is forwarded after exception handler finish its work if defined any.
+            	</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ExceptionsType">
+        <xsd:annotation>
+            <xsd:documentation>
+            	List of Exception.
+                If it is defined directly under root then this list becomes global list for any action or view.
+                If it is defined under action or view than this list becomes specific list for that.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="Exception" type="tns:ExceptionType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ModelType">
+        <xsd:annotation>
+            <xsd:documentation>
+            	This represents a model. 
+            	Which is used with action to carry submmited data from web page to handler.
+            	Which is used with view to carry loaded data from loader to web page.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="name" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                	Name of the model.
+            	</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="type" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    Fully qualified class name of the model.
+                    This class implements org.frozenarc.zeframework.model.Model interface.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="scope" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation>
+                	Scope in which the model resides after creation.
+                	This holds values like "request", "session", "application".
+                	If not defined then defualt value of scope is "session".
+            	</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ModelsType">
+        <xsd:annotation>
+            <xsd:documentation>
+            	List of Model.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="Model" type="tns:ModelType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ModelNameType">
+        <xsd:annotation>
+            <xsd:documentation>
+            	This represents a model name to be used with view or action.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="name" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                	Name of the model.
+            	</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ModelNamesType">
+        <xsd:annotation>
+            <xsd:documentation>
+            	List of ModelName
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="ModelName" type="tns:ModelNameType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ViewValidatorType">
+        <xsd:annotation>
+            <xsd:documentation>
+            	This represents validator used to validate the view before loading.
+                It checks that view to be loaded or not.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="type" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    Fully qualified class name of the validator.
+                    This class imlpements org.frozenarc.zeframework.viewvalidator.ViewValidator interface.
+                    The validator validates the view before loading.
+                    If current view is not be loaded then it returns other view name otherwise returns null.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ViewValidatorsType">
+        <xsd:annotation>
+            <xsd:documentation>
+            	This represents list of View Validator. 
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="ViewValidator" type="tns:ViewValidatorType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ActionValidatorType">
+        <xsd:annotation>
+            <xsd:documentation>
+            	This represents validator used to validate data submitted by an action.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="type" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    Fully qualified class name of the validator.
+                    This class implements org.frozenarc.zeframework.actionvalidator.ActionValidator interface.
+                    The validator validates subimtted data by action.
+                    It returns true if next validator should being called and false if not.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ActionValidatorsType">
+        <xsd:annotation>
+            <xsd:documentation>
+            	This represents list of Action Validator. 
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="ActionValidator" type="tns:ActionValidatorType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ViewType">
+        <xsd:annotation>
+            <xsd:documentation>
+            	This represents a web page request.
+            	ModelNames: Associated names of models with the view.
+            				This is used to carry loaded data from view loader to web page.
+            	Exceptions: Associated configured exceptions with the view.
+                ViewValidators: Associated view validators to be validate the view before loading.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="ModelNames" type="tns:ModelNamesType" minOccurs="0"/>
+            <xsd:element name="Exceptions" type="tns:ExceptionsType" minOccurs="0"/>
+            <xsd:element name="ViewValidators" type="tns:ViewValidatorsType" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="name" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                	Name of the web page request.
+            	</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="page" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                	Path of the web page from context root.
+            	</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="loader" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation>
+                    Fully qualified class name of the view loader.
+                    This class implements org.frozenarc.zeframework.viewloader.ViewLoader interface.
+                    This class loads data to display on the web page.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ViewsType">
+        <xsd:annotation>
+            <xsd:documentation>
+            	List of View.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="View" type="tns:ViewType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ActionType">
+        <xsd:annotation>
+            <xsd:documentation>
+            	This represents a submit request.
+            	ModelNames: Associated names of models with the action. 
+            		    This is used to carry submitted data from web page to action handler.
+            	Exceptions: Associated configured exceptions with the view.
+            	ActionValidators Associated validators to validate submitted data.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="ModelNames" type="tns:ModelNamesType" minOccurs="0"/>
+            <xsd:element name="Exceptions" type="tns:ExceptionsType" minOccurs="0"/>
+            <xsd:element name="ActionValidators" type="tns:ActionValidatorsType" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="name" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                	Name of the submit request.
+            	</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="handler" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                    Fully qualified class name of an action handler configured to handle the action.
+                    This class implements org.frozenarc.zeframework.actionhandler.ActionHandler interface.
+                    This class handles data submitted by the request.
+                    It returns view name to be displayed after this.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ActionsType">
+        <xsd:annotation>
+            <xsd:documentation>
+            	List of Action.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="Action" type="tns:ActionType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ActionViewRedirectType">
+        <xsd:annotation>
+            <xsd:documentation>
+            	This represents method to navigate to next web page. 
+            	A view represented by the viewname should be navigated 
+            	after the action handling represented by the actionname.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="actionname" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                	A actionname of a action which is configured here.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="viewname" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                	A viewname of a view which is configured here
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="sendredirect" type="xsd:boolean" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                	This holds value as "true" or "false".
+                	true: If view should be navigated using response.sendRedirect after handling the action.
+                	false: If view should be navigated using dispatcher.forward after handling the action.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ActionViewRedirectsType">
+        <xsd:annotation>
+            <xsd:documentation>
+            	List of ActionViewRedirect.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="ActionViewRedirect" type="tns:ActionViewRedirectType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ApplicationPropertiesType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This defines configuration for properties file of application.
+                The properties of the file can be accessed by getProperty method
+                of org.frozenarc.zeframework.applicationproperties.ApplicationProperties class in java code
+                and can be accessed by AppPropsTag in web page.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="filepath" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation>
+                	This holds value of absolute properties file path. 
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ZeFWConfigType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This the root element. Which contains all the configuration elements.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="ApplicationLifeCycle" type="tns:ApplicationLifeCycleType" minOccurs="0"/>
+            <xsd:element name="Exceptions" type="tns:ExceptionsType" minOccurs="0"/>
+            <xsd:element name="Models" type="tns:ModelsType" minOccurs="0"/>
+            <xsd:element name="Views" type="tns:ViewsType" minOccurs="0"/>
+            <xsd:element name="Actions" type="tns:ActionsType" minOccurs="0"/>
+            <xsd:element name="ActionViewRedirects" type="tns:ActionViewRedirectsType" minOccurs="0"/>
+            <xsd:element name="ApplicationProperties" type="tns:ApplicationPropertiesType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="ZeFWConfig" type="tns:ZeFWConfigType">
+        <xsd:annotation>
+            <xsd:documentation>
+                This is the root element of configuration file.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    
+</xsd:schema>
