@@ -65,21 +65,21 @@ Below is the structure of the xml file.
 
 3. "Initializer" has an attribute called "type". We can specify fully qualified class name to the "type". The class must implement `org.frozenarc.zeframework.lifecycle.ApplicationInitializer` interface. The class would be called when servlet context is initialized.
 
-4. "ProcessingTube" has an attribute called "type". We can specify fully qualified class name to the "type". The class must extend "org.frozenarc.zeframework.processingtube.AbstractProcessingTube" class. The class would be called on each request of the application. If the request is of type "view" then "beforeProcessView" and "afterProcessView" methods would be called, and if the request is of type "action" then "beforeProcessAction" and "afterProcessAction" method would be called.
+4. "ProcessingTube" has an attribute called "type". We can specify fully qualified class name to the "type". The class must extend `org.frozenarc.zeframework.processingtube.AbstractProcessingTube` class. The class would be called on each request of the application. If the request is of type "view" then "beforeProcessView" and "afterProcessView" methods would be called, and if the request is of type "action" then "beforeProcessAction" and "afterProcessAction" method would be called.
 
-5. "Destroyer" has an attribute called "type". We can specify fully qualified class name to the "type". The class must implement "org.frozenarc.zeframework.lifecycle.ApplicationDestroyer" interface. The class would be called when servlet context is destroyed.
+5. "Destroyer" has an attribute called "type". We can specify fully qualified class name to the "type". The class must implement `org.frozenarc.zeframework.lifecycle.ApplicationDestroyer` interface. The class would be called when servlet context is destroyed.
 
 6. "Exceptions" helps to configure global exception handing on exception occurrence.
 
-7. "Exception" has attributes called "type", "handler", "page". "type" is fully qualified class name of exception which needs to be handled. "handler" is fully qualified class name of a class which implements "org.frozenarc.zeframework.exceptionhandler.ExceptionHandler" interface. The handler would be called when the specified exception occurs. The "handler" is not a required attribute. "page" is the path of jsp which would be dispatched after handling the exception.
+7. "Exception" has attributes called "type", "handler", "page". "type" is fully qualified class name of exception which needs to be handled. "handler" is fully qualified class name of a class which implements `org.frozenarc.zeframework.exceptionhandler.ExceptionHandler` interface. The handler would be called when the specified exception occurs. The "handler" is not a required attribute. "page" is the path of jsp which would be dispatched after handling the exception.
 
 8. "Models" defines models classes which plays roll as carrier classes for data.
 
-9. "Model" has attribute called "name", "type" and "scope". "name" is the model name. "type" is the fully qualified class name of the class which implements "org.frozenarc.zeframework.model.Model". "scope" is the scope value in which the model instance is available. "scope" can have the three values "request", "session", "application". The "scope" is not required attribute. If the scope is not specified, the default value is "session".
+9. "Model" has attribute called "name", "type" and "scope". "name" is the model name. "type" is the fully qualified class name of the class which implements `org.frozenarc.zeframework.model.Model`. "scope" is the scope value in which the model instance is available. "scope" can have the three values "request", "session", "application". The "scope" is not required attribute. If the scope is not specified, the default value is "session".
 
 10. "Views" contains configuration for all views.
 
-11. "View" defines all configuration needed for the view event. The element has attributes called "name", "loader" and "page". "name" is the name of the view event. "loader" is the fully qualified class name of the class which implements "org.frozenarc.zeframework.viewloader.ViewLoader". The class would called when the view event occurs. The class is to load data from some data source (like database, webservices etc.) and populates that models (defined in (12)) with the data. The "loader" is not a required attribute. "page" is the path of jsp page which need to be dispatched after processing of the event.
+11. "View" defines all configuration needed for the view event. The element has attributes called "name", "loader" and "page". "name" is the name of the view event. "loader" is the fully qualified class name of the class which implements `org.frozenarc.zeframework.viewloader.ViewLoader`. The class would called when the view event occurs. The class is to load data from some data source (like database, webservices etc.) and populates that models (defined in (12)) with the data. The "loader" is not a required attribute. "page" is the path of jsp page which need to be dispatched after processing of the event.
 
 12. "ModelNames" specifies all model names which will be used to carry data from server to browser for this event.
 
@@ -91,11 +91,11 @@ Below is the structure of the xml file.
 
 16. "ViewValidators" is the validators chain for this event. This specifies validators which validates the event before data loading occurs.
 
-17. "ViewValidator" has an attribute called "type". The "type" is fully qualified class name of the class which implements "org.frozenarc.zeframework.viewvalidator.ViewValidator". The class would be called when the view event occurs. The "validate" method of the class returns another view name if the current view event should not be processed further. If the method returns null then next validator form the chain would be called.
+17. "ViewValidator" has an attribute called "type". The "type" is fully qualified class name of the class which implements `org.frozenarc.zeframework.viewvalidator.ViewValidator`. The class would be called when the view event occurs. The "validate" method of the class returns another view name if the current view event should not be processed further. If the method returns null then next validator form the chain would be called.
 
 18. "Actions" contains configuration for all actions.
 
-19. "Action" defines all configuration needed for the action event. The element has attributes called "name" and "handler". "name" is the name of the action event. "handler" is the fully qualified class name of the class which implements "org.frozenarc.zeframework.actionhandler.ActionHandler". The class would called when the action event occurs. The class is to process incoming data from models (defined in (20)) and to send the data to some data target (like database, webservices etc.). The "handleAction" method of the class returns view name of the next view event should be occurred.
+19. "Action" defines all configuration needed for the action event. The element has attributes called "name" and "handler". "name" is the name of the action event. "handler" is the fully qualified class name of the class which implements `org.frozenarc.zeframework.actionhandler.ActionHandler`. The class would called when the action event occurs. The class is to process incoming data from models (defined in (20)) and to send the data to some data target (like database, webservices etc.). The "handleAction" method of the class returns view name of the next view event should be occurred.
 
 20. "ModelNames" specifies all model names which are will be used to carry data from browser to server for this event.
 
@@ -107,10 +107,10 @@ Below is the structure of the xml file.
 
 24. "ActionValidators" is the validators chain for this event. This specifies validators which validates the event before data handling occurs.
 
-25. "ActionValidator" has an attribute called "type". The "type" is fully qualified class name of the class which implements "org.frozenarc.zeframework.actionvalidator.ActionValidator". The class would be called when the action event occurs. The "validate" method of the class returns boolean value. If the value is "true" next validator from chain would be called otherwise normal event processing goes further.
+25. "ActionValidator" has an attribute called "type". The "type" is fully qualified class name of the class which implements `org.frozenarc.zeframework.actionvalidator.ActionValidator`. The class would be called when the action event occurs. The "validate" method of the class returns boolean value. If the value is "true" next validator from chain would be called otherwise normal event processing goes further.
 
 26. "ActionViewRedirects" defines that the jsp page should be redirected or dispatched for the "action" and the "view" event combination.
 
 27. "ActionViewRedirect" has three attributes called "actionname", "viewname" and "sendredirect". "actionname" is a action event name. "viewname" is a view event name. "sendredirect" can have "true" or "false" values. If "sendredirect" is "true" the specified view event would be redirected after the specified action event. If "sendredirect" is "false" the specified view event would be dispatched after the specified action event.
 
-28. "ApplicationProperties" defines property file path if application needed any one. The property file must be java standard property file. We can access properties from the property file using "org.frozenarc.zeframework.applicationproperties.ApplicationProperties" class. 
+28. "ApplicationProperties" defines property file path if application needed any one. The property file must be java standard property file. We can access properties from the property file using `org.frozenarc.zeframework.applicationproperties.ApplicationProperties` class. 
