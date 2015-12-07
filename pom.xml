@@ -27,5 +27,14 @@
   </dependencies>
   <build>
     <finalName>zeframework</finalName>
+    <resources>
+          <resource>
+            <directory>${basedir}</directory>
+            <targetPath></targetPath>
+            <includes>
+              <include>LICENSE</include>
+            </includes>
+          </resource>
+    </resources>
   </build>
 </project>
