@@ -8,4 +8,4 @@ Simple, powerful, lightweight java framework to develop web applications
 * Separation of view loader and action handler
 * Good set of custon tags to create usefull component
 
-[Introduction](tutorial/introduction.rd)
+[Introduction](tutorial/introduction.md)
