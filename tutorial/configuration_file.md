@@ -2,7 +2,7 @@ The framework must have a xml file to get configuration information. The xml fil
 
 Below is the structure of the xml file.
 
-ZeFWConfig (1..1)
+    ZeFWConfig (1..1)
     |
     |---> ApplicationLifeCycle (0..1)
     |     |
