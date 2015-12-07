@@ -5,7 +5,7 @@ For this purpose, most of custom tags in the framework have "valuefrom" and "val
 
 Now suppose, we can have some custom tag like
 
-<zfw:out valuefrom="m{modelName.propertyName1.propertyName2}"/>
+    <zfw:out valuefrom="m{modelName.propertyName1.propertyName2}"/>
 
 So, here "m" stands for "model", expression start with "{" and ends with "}".
 Here, "modelName" is name of the model which we have defined in configuration file in
@@ -16,7 +16,7 @@ We can use the above expression as it is if "propertyName2" is any of the data t
 
 When we need to get/set "java.util.Date" type property the framework converts date object into string object to get, and converts string object into date object to set, and for that it uses local timezone and default format. But, if we need specific timezone and/or specific format than we can specify it in above expression. Now, above expression looks like below to display date in specific timezone and format.
 
-<zfw:out valuefrom="m{modelName.propertyName1.propertyName2}t{IST}f{dd/MM/yyyy HH:mm:ss}"/>
+&lt;zfw:out valuefrom="m{modelName.propertyName1.propertyName2}t{IST}f{dd/MM/yyyy HH:mm:ss}"/&gt;
 
 Here, "t" stands for "timezone" and "f" stands for "format". We can pass any timezone string which "java.util.TimeZone.getTimeZone" mothod can support. And we can pass any date format string which "java.text.SimpleDateFormat" class can support.
 
