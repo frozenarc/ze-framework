@@ -1,5 +1,5 @@
 # zeframework
-Simple, lightweight java framework to develop web applications
+Simple, powerful, lightweight java framework to develop web applications
 
 ## Features
 * XML file based configuration
@@ -7,3 +7,5 @@ Simple, lightweight java framework to develop web applications
 * Simple syntax
 * Separation of view loader and action handler
 * Good set of custon tags to create usefull component
+
+[Introduction](tutorial/introduction.rd)
