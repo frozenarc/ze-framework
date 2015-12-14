@@ -20,13 +20,13 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="ApplicationLifeCycle" type="{http://www.mvpanchal.org/zefw/config}ApplicationLifeCycleType" minOccurs="0"/>
- *         &lt;element name="Exceptions" type="{http://www.mvpanchal.org/zefw/config}ExceptionsType" minOccurs="0"/>
- *         &lt;element name="Models" type="{http://www.mvpanchal.org/zefw/config}ModelsType" minOccurs="0"/>
- *         &lt;element name="Views" type="{http://www.mvpanchal.org/zefw/config}ViewsType" minOccurs="0"/>
- *         &lt;element name="Actions" type="{http://www.mvpanchal.org/zefw/config}ActionsType" minOccurs="0"/>
- *         &lt;element name="ActionViewRedirects" type="{http://www.mvpanchal.org/zefw/config}ActionViewRedirectsType" minOccurs="0"/>
- *         &lt;element name="ApplicationProperties" type="{http://www.mvpanchal.org/zefw/config}ApplicationPropertiesType" minOccurs="0"/>
+ *         &lt;element name="ApplicationLifeCycle" type="{http://www.frozenarc.org/zeframework/config}ApplicationLifeCycleType" minOccurs="0"/>
+ *         &lt;element name="Exceptions" type="{http://www.frozenarc.org/zeframework/config}ExceptionsType" minOccurs="0"/>
+ *         &lt;element name="Models" type="{http://www.frozenarc.org/zeframework/config}ModelsType" minOccurs="0"/>
+ *         &lt;element name="Views" type="{http://www.frozenarc.org/zeframework/config}ViewsType" minOccurs="0"/>
+ *         &lt;element name="Actions" type="{http://www.frozenarc.org/zeframework/config}ActionsType" minOccurs="0"/>
+ *         &lt;element name="ActionViewRedirects" type="{http://www.frozenarc.org/zeframework/config}ActionViewRedirectsType" minOccurs="0"/>
+ *         &lt;element name="ApplicationProperties" type="{http://www.frozenarc.org/zeframework/config}ApplicationPropertiesType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

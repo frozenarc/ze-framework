@@ -67,7 +67,7 @@ public class ConfigLoader {
     }
 
     protected static ZeFWConfigType loadConfig(ServletContext context, String xmlPath) throws JAXBException {
-        JAXBContext jaxbContext = JAXBContext.newInstance("org.mvpanchal.zeframework.config");
+        JAXBContext jaxbContext = JAXBContext.newInstance("org.frozenarc.zeframework.config");
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         JAXBElement ele = (JAXBElement) unmarshaller.unmarshal(context.getResourceAsStream(xmlPath));
         return (ZeFWConfigType) ele.getValue();
