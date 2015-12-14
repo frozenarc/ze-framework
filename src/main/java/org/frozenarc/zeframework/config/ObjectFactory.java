@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the org.mvpanchal.zeframework.config package.
+ * generated in the org.frozenarc.zeframework.config package.
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -23,10 +23,10 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _ZeFWConfig_QNAME = new QName("http://www.mvpanchal.org/zeframework/config", "ZeFWConfig");
+    private final static QName _ZeFWConfig_QNAME = new QName("http://www.frozenarc.org/zeframework/config", "ZeFWConfig");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.mvpanchal.zeframework.config
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.frozenarc.zeframework.config
      * 
      */
     public ObjectFactory() {
@@ -196,7 +196,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ZeFWConfigType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.mvpanchal.org/zeframework/config", name = "ZeFWConfig")
+    @XmlElementDecl(namespace = "http://www.frozenarc.org/zeframework/config", name = "ZeFWConfig")
     public JAXBElement<ZeFWConfigType> createZeFWConfig(ZeFWConfigType value) {
         return new JAXBElement<ZeFWConfigType>(_ZeFWConfig_QNAME, ZeFWConfigType.class, null, value);
     }

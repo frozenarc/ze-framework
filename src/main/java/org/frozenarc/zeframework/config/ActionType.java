@@ -25,9 +25,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="ModelNames" type="{http://www.mvpanchal.org/zefw/config}ModelNamesType" minOccurs="0"/>
- *         &lt;element name="Exceptions" type="{http://www.mvpanchal.org/zefw/config}ExceptionsType" minOccurs="0"/>
- *         &lt;element name="ActionValidators" type="{http://www.mvpanchal.org/zefw/config}ActionValidatorsType" minOccurs="0"/>
+ *         &lt;element name="ModelNames" type="{http://www.frozenarc.org/zeframework/config}ModelNamesType" minOccurs="0"/>
+ *         &lt;element name="Exceptions" type="{http://www.frozenarc.org/zeframework/config}ExceptionsType" minOccurs="0"/>
+ *         &lt;element name="ActionValidators" type="{http://www.frozenarc.org/zeframework/config}ActionValidatorsType" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="handler" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />

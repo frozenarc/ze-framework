@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  *             	This defines configuration for properties file of application.
  *             	The properties of the file can be accessed by getProperty method 
- *             	of org.mvpanchal.zeframework.applicationproperties.ApplicationProperties class in java code
+ *             	of org.frozenarc.zeframework.applicationproperties.ApplicationProperties class in java code
  *             	and can be accessed by AppPropsTag in web page.
  *             
  * 

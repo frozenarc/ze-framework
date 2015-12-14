@@ -23,9 +23,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Initializer" type="{http://www.mvpanchal.org/zefw/config}LifeCycleHandlerType" minOccurs="0"/>
- *         &lt;element name="ProcessingTube" type="{http://www.mvpanchal.org/zefw/config}LifeCycleHandlerType" minOccurs="0"/>
- *         &lt;element name="Destroyer" type="{http://www.mvpanchal.org/zefw/config}LifeCycleHandlerType" minOccurs="0"/>
+ *         &lt;element name="Initializer" type="{http://www.frozenarc.org/zeframework/config}LifeCycleHandlerType" minOccurs="0"/>
+ *         &lt;element name="ProcessingTube" type="{http://www.frozenarc.org/zeframework/config}LifeCycleHandlerType" minOccurs="0"/>
+ *         &lt;element name="Destroyer" type="{http://www.frozenarc.org/zeframework/config}LifeCycleHandlerType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

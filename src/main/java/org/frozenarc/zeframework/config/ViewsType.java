@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="View" type="{http://www.mvpanchal.org/zefw/config}ViewType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="View" type="{http://www.frozenarc.org/zeframework/config}ViewType" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
