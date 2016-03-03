@@ -30,7 +30,7 @@ Here, we can specify either "Y" or "N" as first letter in the format expression.
 
 The other custom tags which can set data to model with attribute named "valueto" has same expression syntax as defined above.
 
-To get value of any variable defined in jsp page by "org.mvpanchal.zefw.tag.DefineTag" or any other jsp custom tag, we need to use syntax like below.
+To get value of any variable defined in jsp page by "org.frozenarc.zeframework.tag.DefineTag" or any other jsp custom tag, we need to use syntax like below.
 
     <zfw:out value="$variable1"/>
 
