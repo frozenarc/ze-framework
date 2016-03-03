@@ -10,9 +10,9 @@ Now suppose, we can have some custom tag like
     <zfw:out valuefrom="m{modelName.propertyName1.propertyName2}"/>
 
 So, here "m" stands for "model", expression start with "{" and ends with "}".
-Here, "modelName" is name of the model which we have defined in configuration file in
-"Models -> Model -> name".
-"propertyName1" is the property name of specified model. The model must have getter and setter method for this property. In our case "proeprtyName1" is a user defined class' object and it has a property named "propertyName2". The user defined object also must have getter and setter method for this property.
+"modelName" is name of the model which we have defined in configuration file in "Models -> Model -> name". "propertyName1" is the property name of specified model.
+The model must have getter and setter method for this property. In our case "proeprtyName1" is a user defined class' object and it has a property named "propertyName2".
+The user defined object also must have getter and setter method for this property.
 
 We can use the above expression as it is if "propertyName2" is any of the data types like "int", "short", "long", "float", "double", "char", "boolean", "java.lang.Integer", "java.lang.Short", "java.lang.Long", "java.lang.Float", "java.lang.Double", "java.lang.Char", "java.lang.Boolean", "java.lang.String", "java.util.Date".
 
@@ -20,7 +20,7 @@ When we need to get/set "java.util.Date" type property the framework converts da
 
     <zfw:out valuefrom="m{modelName.propertyName1.propertyName2}t{IST}f{dd/MM/yyyy HH:mm:ss}"/>
 
-Here, "t" stands for "timezone" and "f" stands for "format". We can pass any timezone string which "java.util.TimeZone.getTimeZone" mothod can support. And we can pass any date format string which "java.text.SimpleDateFormat" class can support.
+Here, "t" stands for "timezone" and "f" stands for "format". We can pass any timezone string which "java.util.TimeZone.getTimeZone()" method can support. And we can pass any date format string which "java.text.SimpleDateFormat" class can support.
 
 If the we need to get/set property of type "int", "short", "long", "float", "double", "java.lang.Integer", "java.lang.Short", "java.lang.Long", "java.lang.Float" and "java.lang.Double" in some specific format than we can specify it in expression like below.
 
@@ -34,17 +34,19 @@ To get value of any variable defined in jsp page by "org.frozenarc.zeframework.t
 
     <zfw:out value="$variable1"/>
 
-Please, notice that we have used "value" here instead of "valuefrom". If we need to get variable's value we always need to user "value" not "valuefrom". "valuefrom" should be used only to work with models.
-We can see that we haven't used here curly braces. Because, it is conflicting with basic jsp syntax to get variable's value. Although, we can also use basic syntax also to get variable's value.
+Please, notice that we have used "value" here instead of "valuefrom". If we need to get variable's value we always need to use "value" not "valuefrom". "valuefrom" should be used only to work with models.
+We can see that we haven't used here curly braces. Because, it is conflicting with basic jsp syntax to get variable's value. Although, we can also use basic syntax to get variable's value.
 
-Suppose, that propertyName1 is an array of a user defined object, then what would be the syntax to get propertyName2. It looks like below.
+Suppose, that "propertyName1" is an array of a user defined object, and we need to get "propertyName2" from first element of "propertyName1" array, then we would have syntax like below.
 
     <zfw:out valuefrom="m{modelName.propertyName1[0].propertyName2}"/>
 
-Here we can use a variable instead of contanst "0". It looks like
+Here we can use a variable instead of constant "0". It looks like
 
     <zfw:out valuefrom="m{modelName.propertyName1[$variable1].propertyName2}"/>
 
 If propertyName2 is an array then we can write syntax as below.
 
     <zfw:out valuefrom="m{modelName.propertyName1[$variable1].propertyName2[$variable2]}"/>
+
+The beauty of the framework is we can go how much in-depth we want to go by declaring user defined objects and/or arrays of it. We can create unlimited hierarchy of user defined object and/or its arrays.
